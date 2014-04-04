@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <script src="/bookshop/Public/Js/jquery.js"></script>
+
+    <load href="/bookshop/Public/Pure/pure-min.css" />
+    <!--[if lte IE 8]>
+    <load href="/app/Public/Pure/css/layouts/side-menu.css" />
+    <![endif]-->
+    <!--[if gt IE 8]><!-->
+    <load href="/app/Public/Pure/css/layouts/side-menu-old-ie.css" />
+    <!--<![endif]-->
+</head>
+<body>
+
+
+<div id="layout">
+    <!-- Menu toggle -->
+    <a href="#menu" id="menuLink" class="menu-link">
+        <!-- Hamburger icon -->
+        <span></span>
+    </a>
+
+    <div id="menu">
+        <div class="pure-menu pure-menu-open">
+            <a class="pure-menu-heading" href="#">Company</a>
+
+            <ul>
+
+                <li><a class="x1" href="/bookshop/index.php/Admin/admin">修改商品</a></li>
+                <li><a class="x2" href="/bookshop/index.php/Admin/uedit">用户修改</a></li>
+                <li><a class="x3" href="__URL__/signout">登出</a></li>
+
+
+
+
+            </ul>
+        </div>
+    </div>
+
+    <div id="main">
+
+            <input type="button" value="登出" onclick="location.href='__URL__/signout';">
+
+        <div>
+            <form id="form2" method='post' action="__URL__/addone">
+
+                <tr>
+                    <td class="tRight" >添加商品：</td>
+                    <td class="tLeft" ><input type="text" name="name" style="height:23px" class="huge bLeft"></td>
+                </tr>
+
+                <tr>
+                    <td class="tRight" >价格：</td>
+                    <td class="tLeft" ><input type="text" name="price" style="height:23px" class="huge bLeft"></td>
+                </tr>
+                <tr> <td><input type="submit" class="button" value="添加"> </td></tr>
+
+            </form>
+        </div>
+
+
+            <volist name="data" id="vo">
+                <img src="/bookshop/Public/Uploads/s_{$vo.image}" />
+
+                <form id="upload" method='post' action="__URL__/upload" enctype="multipart/form-data">
+                    <div class="result" ></div>
+                    <input type="hidden" name="id" value="{$vo.id}" />
+                    <input type="hidden" name="purl" value="s_{$vo.image}" />
+                    <input name="image" id="image" type="file" >
+                    <input type="submit" value="up" class="button" >
+                </form>
+
+                <FORM method="post" action="__URL__/detail/id/{$vo.id}">
+                    商品名：<INPUT type="text"  value="{$vo.name}" readonly="readonly">
+                    价格：<INPUT type="text"  value="{$vo.price}" readonly="readonly">
+                    <input type="hidden" name="id" value="{$vo.id}">
+                    <INPUT type="submit" value="修改">
+                </FORM>
+                <FORM method="post" action="__URL__/detail/id/{$vo.id}">
+                    <input type="hidden" name="id" value="{$vo.id}">
+                    <input type="hidden" name="id" value="{$vo.id}">
+
+
+                </FORM>
+
+
+
+            </volist>
+
+
+        </div>
+    </div>
+
+
+
+
+
+</body>
+</html>
