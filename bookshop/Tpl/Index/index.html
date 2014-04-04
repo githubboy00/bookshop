@@ -1,0 +1,67 @@
+<html>
+<head>
+    <meta charset="GB2312">
+    <title>Bookshop</title>
+    <script src="/bookshop/Public/Js/jquery.js"></script>
+    <script src="/bookshop/Public/Js/ajax.js">
+    </script>
+    <load href="/bookshop/Public/Pure/pure-min.css" />
+
+
+    <!--[if lte IE 8]>
+    <load href="/app/Public/Pure/css/layouts/side-menu.css" />
+    <![endif]-->
+    <!--[if gt IE 8]><!-->
+    <load href="/app/Public/Pure/css/layouts/side-menu-old-ie.css" />
+    <!--<![endif]-->
+
+</head>
+<body>
+
+
+
+<div id="layout">
+    <!-- Menu toggle -->
+    <a href="#menu" id="menuLink" class="menu-link">
+        <!-- Hamburger icon -->
+        <span></span>
+    </a>
+
+    <div id="menu">
+        <div class="pure-menu pure-menu-open">
+            <a class="pure-menu-heading" href="#">Company</a>
+
+            <ul>
+
+                <li><a class="x1" href="#">注册</a></li>
+                <li><a class="x2" href="#">登陆</a></li>
+                <li >
+                    <a  class="x3" href="#">商品</a>
+                </li>
+                <li><a  class="x4" href="#">商品列表</a></li>
+
+            </ul>
+        </div>
+    </div>
+
+    <div id="main">
+        <div>{$id}</div>
+        <volist name="data" id="vo">
+            <img src="/bookshop/Public/Uploads/s_{$vo.image}" />
+            <FORM method="post" action="__URL__/order">
+
+                商品名：<INPUT type="text" name="in" value="{$vo.name}" readonly="readonly"/>
+                价格：<INPUT type="text" name="no" value="{$vo.price}" readonly="readonly"/>
+                <input type="hidden" name="image" value="{$vo.image}">
+                <INPUT type="submit" value="提交">
+            </FORM>
+        </volist>
+
+
+</div>
+
+
+
+
+
+
